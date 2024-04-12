@@ -1,5 +1,5 @@
 import os
-from discord import Client, Intents, Object, Interaction
+from discord import Client, Intents, Object
 from discord.app_commands import CommandTree
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -12,19 +12,13 @@ client = Client(intents=intents)
 command_tree = CommandTree(client)
 
 
-# @command_tree.command(
-#     name="ping",
-#     description="sends \"pong\"",
-# )
-# async def gping(interaction: Interaction):
-#     await interaction.response.send_message("pong")
-
-
 @client.event
 async def on_ready():
-    # command_tree.clear_commands(guild=Object(id=DEBUG_GUILD_ID))
+    command_tree.clear_commands(guild=Object(id=DEBUG_GUILD_ID))
     print(len(command_tree.get_commands()))
-    await command_tree.sync(guild=Object(id=DEBUG_GUILD_ID))
+    await command_tree.sync(guild=None)
+    guild = await client.fetch_guild(DEBUG_GUILD_ID)
+    print(guild.name)
     print("Ready!")
 
 
