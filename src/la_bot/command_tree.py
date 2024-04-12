@@ -13,4 +13,4 @@ class CommandTree(discord.app_commands.CommandTree):
 @command()
 async def ping(interaction: Interaction):
     """Respond with a \"pong!\""""
-    await interaction.response.send_message("pong")
+    await interaction.response.send_message("pong!")
