@@ -1,5 +1,5 @@
 import discord
-from discord.app_commands import CommandTree
+from .command_tree import CommandTree
 
 
 class Client(discord.Client):
