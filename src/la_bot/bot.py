@@ -7,6 +7,7 @@ class Bot(commands.Bot):
     async def on_ready(self):
         self.add_command(close)
         self.add_command(sync_tree)
+        self.add_command(echo)
         print("Ready!")
 
 
@@ -21,3 +22,8 @@ async def sync_tree(ctx: Context):
     print(f"Trying to sync tree for guild (id = {guild_id})")
     await ctx.bot.tree.sync(guild=Object(id=guild_id))
     print(f"Tree should be synced for guild (id = {guild_id})")
+
+
+@hybrid_command()
+async def echo(ctx: Context, *, message_to_echo):
+    await ctx.send(message_to_echo)
