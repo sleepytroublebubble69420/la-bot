@@ -1,5 +1,6 @@
 import os
-from discord import Client, Intents, Object
+from la_bot import LaBot
+from discord import Intents, Object
 from discord.app_commands import CommandTree
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -8,7 +9,7 @@ DEBUG_GUILD_ID = os.getenv("DEBUG_GUILD_ID")
 intents = Intents.default()
 intents.message_content = True
 
-client = Client(intents=intents)
+client = LaBot(intents=intents)
 command_tree = CommandTree(client)
 
 
