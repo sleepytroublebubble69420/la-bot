@@ -1,11 +1,13 @@
 import os
 import logging
+from voice_chat_cog import VoiceChatCog
 from discord.ext.commands import Bot, Context
 from discord import Intents
 
 
 class LaBot(Bot):
     async def on_ready(self):
+        self.add_cog(VoiceChatCog())
         print("Ready!")
 
         @self.hybrid_command()
