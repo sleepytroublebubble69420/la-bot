@@ -1,5 +1,5 @@
 import os
-from la_bot.bot import Bot
+from bot import Bot
 from discord import Intents
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
