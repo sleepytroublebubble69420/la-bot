@@ -2,7 +2,7 @@ import os
 import logging
 from voice_chat_cog import VoiceChatCog
 from discord.ext.commands import Bot, Context
-from discord import Intents
+from discord import Intents, VoiceChannel
 
 
 class LaBot(Bot):
@@ -13,6 +13,14 @@ class LaBot(Bot):
         @self.hybrid_command()
         async def close(ctx: Context):
             await la_bot.close()
+
+        @self.command()
+        async def test(ctx: Context, test_argument: VoiceChannel):
+            if test_argument is VoiceChannel:
+                await ctx.send("Ok")
+            else:
+                await ctx.send("Ko")
+
 
 
 if __name__ == "__main__":
