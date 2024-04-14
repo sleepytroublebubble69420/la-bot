@@ -17,14 +17,14 @@ async def close(ctx: Context):
 
 
 @hybrid_command()
-async def sync_tree(ctx: Context):
-    guild_id = ctx.guild.id
-    print(f"Trying to sync tree for guild (id = {guild_id})")
-    # await ctx.bot.tree.sync(guild=Object(id=guild_id))
-    print(f"Tree should be synced for guild (id = {guild_id})")
-
-    await ctx.bot.tree.sync(guild=None)
-    print("Tree should be synced globaly")
+async def sync_tree(ctx: Context, guild_id=None):
+    if guild_id is None:
+        print(f"Trying to sync tree for guild (id = {guild_id})")
+        await ctx.bot.tree.sync(guild=Object(id=guild_id))
+        print(f"Tree should be synced for guild (id = {guild_id})")
+    else:
+        await ctx.bot.tree.sync(guild=None)
+        print("Tree should be synced globaly")
 
 
 @hybrid_command()
