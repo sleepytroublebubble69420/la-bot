@@ -20,7 +20,8 @@ async def close(ctx: Context):
 async def sync_tree(ctx: Context):
     guild_id = ctx.guild.id
     print(f"Trying to sync tree for guild (id = {guild_id})")
-    await ctx.bot.tree.sync(guild=Object(id=guild_id))
+    # await ctx.bot.tree.sync(guild=Object(id=guild_id))
+    await ctx.bot.tree.sync(guild=None)
     print(f"Tree should be synced for guild (id = {guild_id})")
 
 
