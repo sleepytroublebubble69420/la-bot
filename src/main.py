@@ -1,7 +1,12 @@
 import os
 import logging
-from bot import Bot
+from discord.ext.commands import Bot, Context
 from discord import Intents
+
+
+class LaBot(Bot):
+    async def on_ready(self):
+        print("Ready!")
 
 
 if __name__ == "__main__":
@@ -12,5 +17,9 @@ if __name__ == "__main__":
     intents = Intents.default()
     intents.message_content = True
 
-    la_bot = Bot("la_bot/", intents=intents)
+    la_bot = LaBot("la_bot/", intents=intents)
     la_bot.run(BOT_TOKEN, log_handler=handler, log_level=logging.DEBUG)
+
+    @la_bot.hybrid_command()
+    async def close(ctx: Context):
+        await la_bot.close()
