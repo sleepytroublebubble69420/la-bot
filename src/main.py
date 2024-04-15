@@ -28,4 +28,4 @@ if __name__ == "__main__":
     intents.message_content = True
 
     la_bot = LaBot("la_bot/", intents=intents)
-    la_bot.run(BOT_TOKEN, log_level=logging.DEBUG)  # , log_handler=handler, log_level=logging.DEBUG)
+    la_bot.run(BOT_TOKEN, log_handler=handler, log_level=logging.DEBUG)
